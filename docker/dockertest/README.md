@@ -12,8 +12,10 @@
     * dev conatainer trouble shooting 
 
 * Docker compose 
-    * understanding the concept of Yaml file, what is compose yaml file, how it works and based on 
-    * writing a compose yaml file and why it is important and what benefits it has
+    * understanding the concept of Yaml file, what is compose yaml file
+    * writing a compose yaml file 
+    * how it plays the most important part in your container 
+    * based on what compoenets we write a compose.yaml file 
 
 * Compose DB
     
