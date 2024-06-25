@@ -79,12 +79,12 @@ docker ps -a
 
 * with container name 
 ```
-docker exec -it inspiring_tesla /bin/bash
+docker exec -it <container_name or id > /bin/bash
 ```
 
 * with container id 
 ```
-docker exec -it e8f5e7cd3f7a /bin/bash
+docker exec -it <container_name or id > /bin/bash
 ```
 writing the starting 4 digits of the id could be enough 
 
@@ -96,7 +96,7 @@ docker inspect <container id or name>
 * To create an image from a container 
 
 ```
-docker commit <container id>
+docker commit<container_name or id >
 ``` 
 
 

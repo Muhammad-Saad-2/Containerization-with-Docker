@@ -1,5 +1,5 @@
-# version: "3.8"
-name: "fastapi"
+version: "3.9"
+
 services:
   api:
     build:
@@ -9,23 +9,24 @@ services:
       - postgres_db
     ports:  
       - "8000:8000" 
+    
     networks:
-      - my-api-net
+      - my-api-net  
 
-  postgress_db:
+  postgres_db:
     image: postgres:latest
     restart: always
-    container_name: PostgresCont
+    container_name: SQLcontainer
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=sweethomealabama
-      - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=****************  # I have used this symbols, ofcourse you'd be using your own db credentials
+        - POSTGRES_DB=postgres 
     ports:
-      - '5432:5432'
+      - "5432:5432"
     volumes:
       - postgres_db:/var/lib/postgresql/data
     networks:
-      - my-api-net  # Ensure there's a space before "my-api-net"
+      - my-api-net
 
 volumes:
   postgres_db:
@@ -33,3 +34,4 @@ volumes:
 
 networks:
   my-api-net:
+    driver: bridge
