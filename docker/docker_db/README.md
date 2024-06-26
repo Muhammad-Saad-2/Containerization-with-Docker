@@ -63,14 +63,17 @@ To start the application, run the following command in the directory containing 
 ```
 
 ### To see the logs of a container created by docker compose 
-```docker compose logs <service name>
+```
+docker compose logs <service name>
 ```
 #To access the table 
 ### To enter into the postgres container and acess the table
-```docker exec -it SQLcontainer psql -U postgres -d postgres
+```
+docker exec -it SQLcontainer psql -U postgres -d postgres
 ```
 ### To access the table
-```SELECT * from students;
+```
+SELECT * from students;
 ```
 ## As can  be seen in the picture
 
