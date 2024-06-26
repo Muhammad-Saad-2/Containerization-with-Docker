@@ -19,7 +19,7 @@ services:
     container_name: SQLcontainer
     environment:
         - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=****************  # I have used this symbols, ofcourse you'd be using your own db credentials
+        - POSTGRES_PASSWORD= your_password  # I have wriiten your_password just for the explanation's sake, of course you'd be using your own db credentials
         - POSTGRES_DB=postgres 
     ports:
       - "5432:5432"

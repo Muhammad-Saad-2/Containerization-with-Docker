@@ -6,8 +6,9 @@ from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
 from sqlmodel import Field, SQLModel, Session, create_engine
-
+from contextlib import asynccontextmanager
 from app.settings import DATABASE_URL, SessionLocal
+from typing import AsyncGenerator
 
 
 # SQLAlchemy engine creation
@@ -35,7 +36,10 @@ class Student(Base):
 
 
 # Create tables in the database if they don't exist
-Base.metadata.create_all(bind=engine)
+#Base.metadata.create_all(bind=engine)
+
+def create_db_and_tables()->None:
+    SQLModel.metadata.create_all(engine)
 
 
 # Pydantic model for creating a new student (input validation)
@@ -56,8 +60,24 @@ class StudentResponse(BaseModel):
         from_attributes = True  # Convert SQLAlchemy objects to dict
 
 
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI)-> AsyncGenerator[None, None]:
+    print("Creating tables..")
+    create_db_and_tables()
+    yield
+
+
 # FastAPI app instance
-app = FastAPI()
+app = FastAPI(lifespan=lifespan, title="students's bio data", 
+    version="0.0.1",
+    servers=[
+        {
+            "url": "http://127.0.0.1:8000", 
+            "description": "Development Server"
+        }
+        ])
 
 
 # Dependency to get the database session
@@ -67,6 +87,10 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# def get_session():
+#     with Session(engine) as session:
+#         yield session
 
 
 # Endpoint to create a new student
