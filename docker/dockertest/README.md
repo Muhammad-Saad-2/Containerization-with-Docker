@@ -1,15 +1,11 @@
 # Here we have covered 3 major topics till yet
 * Docker Build    
-    * how to write a dockerfile
-    * base on what components we write a dockerfile
-    * container troubleshooting 
-    * handling the errors inside the container 
-    * interacting with the containers
-    * inspecting the containers
-
-* Dev containers 
-    * create a container through dev images
-    * dev conatainer trouble shooting 
+    * How to write a Dockerfile
+    * How to write a compose file 
+    * Container troubleshooting
+    * Interacting with the containers
+    * Troubleshooting in interactive mode 
+   
 
 * Docker compose 
     * understanding the concept of Yaml file, what is compose yaml file
@@ -57,68 +53,51 @@ Pressing Ctrl + P followed by Ctrl + Q in sequence will detach your terminal fro
 
 
 ## To see the details of the container in case of any error 
-
 ```
 docker logs <container name > or <container id>
-
 ```
-## To see the runnig container 
-
+## To see the list of the running containers 
 ```
 docker ps
-
 ```
 ## To see the list of all containers 
-
 ```
-
 docker ps -a
-
 ```
 ## To enter in an existing container
-
-* with container name 
 ```
 docker exec -it <container_name or id > /bin/bash
 ```
+writing the starting 4 digits of the ID would be enough 
 
-* with container id 
-```
-docker exec -it <container_name or id > /bin/bash
-```
-writing the starting 4 digits of the id could be enough 
 
-* To inspect the contaienr 
+##  To inspect the container
 ```
 docker inspect <container id or name>
 ```
 
-* To create an image from a container 
-
+## To create an image from a container 
 ```
 docker commit<container_name or id >
 ``` 
+# Docker compose 
 
-
-
-## Docker compose 
-
-* To run the compose file in a detach nmode 
+## To run the compose file in a detach mode 
 ```
 docker compose up -d"
 ```
 
-* To stop the ocntainer through docker compose 
+## To abort the container through docker compose. only those you've created using docker compose 
 ```
 docker compose down
 ```
 
-* To forcefully build the container in case of any changes in code 
+## To forcefully build the container in case of any changes in code 
 ```
 docker compose -up -d --buils
 ```
 
-* To read the compose.yaml file in the terminal  
+## To read the compose.yaml file in the terminal  
 ```
 docker compose config
 ```
