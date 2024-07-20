@@ -1,4 +1,4 @@
-# Containerizing a basic FastAPI Student bio data Management Application integrated PostgreSQL
+# Containerizing a basic FastAPI Student bio data Management Application integrated with PostgreSQL
 This project is an instance of how to integrate an API with Postgres and containerize it inside the Docker
 
 ## Technologies Used
